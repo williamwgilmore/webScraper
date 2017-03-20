@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cheerio": "^0.22.0",
+    "mongoose": "^4.9.0",
+    "request": "^2.81.0"
+  }
+}
