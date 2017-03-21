@@ -70,7 +70,15 @@ module.exports = function(app) {
 				};
 			});
 			console.log('Scrape complete');
+
+			//return the current db list
+			Article.find({}).sort({'_id':-1}).exec(function(error, data){
+				if(error){
+					res.send(error);
+				} else {
+					res.send(data);
+				};
+			});
 		});
-		res.send({scan: 'Complete'});
 	});
 };

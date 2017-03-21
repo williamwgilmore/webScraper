@@ -1,0 +1,23 @@
+.comments {
+	background: #F3F3F3;
+	padding: 5px;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.commentText {
+	background: white;
+	padding: 2px;
+	border-style: solid;
+	border-width: 1px;
+	margin-bottom:5px;
+	margin-top: 0px;
+}
+
+.show {
+  display: block !important;
+}
+
+.hidden {
+  display: none !important;
+}

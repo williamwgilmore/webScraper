@@ -4,20 +4,54 @@
     <meta charset="UTF-8">
     <title>WebScraper</title>
     <script
-  		src="https://code.jquery.com/jquery-3.2.0.js"
-  		integrity="sha256-wPFJNIFlVY49B+CuAIrDr932XSb6Jk3J1M22M3E2ylQ="
-  		crossorigin="anonymous">
-  	</script>
+    src="https://code.jquery.com/jquery-3.2.0.js"
+    integrity="sha256-wPFJNIFlVY49B+CuAIrDr932XSb6Jk3J1M22M3E2ylQ="
+    crossorigin="anonymous">
+    </script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          </button>
+          <a class="navbar-brand" href="#">WebScraper</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
     <div class = 'container'>
-		<div class = 'row'>
-			<div class = 'col-md-12'>
-				<div class = 'articleList'>
-
-				</div>
-			</div>
-		</div>
+      <div class = 'row'>
+        <div class = 'col-md-12 text-center'>
+          <h3>Find and discuss the top articles from <a href = http://www.npr.org/sections/us/>npr.org/setions/us</a></h3>
+        </div>
+      </div>
+      <div class = 'row'>
+        <div class = 'col-md-7'>
+          <ul class = 'articleList'>
+          </ul>
+        </div>
+        <div class = 'col-md-5'>
+          <div class = 'comments hidden'>
+            <h4 class = 'commentTitle commentText text-center'>Title</h4>
+            <h4 class = 'commentText'><a href='#'>Article Source</a></h4>
+            <p class = 'commentSection commentText'>Comments</p>
+            <button class = ''>Submit</button>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="app.js"></script>
   </body>
