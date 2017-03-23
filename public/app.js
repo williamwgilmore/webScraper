@@ -48,19 +48,18 @@ var findComment	= function(articleId){
     	method: "GET",
     	url: "/articles/" + articleId
   	}).done(function(data) {
-  		console.log(data);
-  		if (data[0].comment>0){
+  		//if (data[0].comment>0){
   			// for(i=0; i<limit; i++){
   			// 	listComment(data[i].comment.body);
   			// }
   			listComment(data[0].comment.body)
-  		}
+  		//}
 	});
 }
 
 var listComment = function(comment){
 	console.log(comment);
-	var nextComment = '<li>' + comment.body + '</li>';
+	var nextComment = '<li>' + comment + '</li>';
   $('.oldComments').append(nextComment);
 };
 
