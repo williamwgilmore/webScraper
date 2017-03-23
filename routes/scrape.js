@@ -22,7 +22,7 @@ module.exports = function(app) {
 	    			currentStorage.push(data[i].title);
 	    		}
 	    		//log our current articles
-	    		console.log(currentStorage);
+	    		console.log('Returned current articles');
 	    	}
 	  	});
 

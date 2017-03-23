@@ -1,10 +1,4 @@
-//this checks to see if there is data in the database
-//it should always at least have some data, so I'm commenting out this function
-// $.getJSON('/scrape', function(data) {
-// 	if (data){
-// 		listArticle();
-// 	}
-// });
+//-------Find articles from db and add them to the page -----
 
 //Send a request to the server to get the articles in the db
 var listArticle = function(){
@@ -12,7 +6,7 @@ var listArticle = function(){
 		//we then run through each article
   		for(i=0; i < data.length; i++){
   			//and add it to our html
-    		addArticle(data[i]);
+    		listArticle(data[i]);
   		};
 	});
 };
@@ -20,10 +14,18 @@ var listArticle = function(){
 listArticle();
 
 //adds the html to the page for each article
-var addArticle = function(article){
-  var articleRow = '<li class= "popout" data-link= ' + article.link + '>' + article.title + '</li>';
+var listArticle = function(article){
+  var articleRow = '<li class= "popout" data-link= "' + article.link;
+  	  articleRow += '" data-id = "' + article._id + '">';
+  	  articleRow += article.title + '</li>';
   $('.articleList').append(articleRow);
 };
+
+//--------------------------------------------------------------
+
+
+
+//-------- Open and populate the comment section ---------------
 
 //when a user clicks on an article, the link and pop out appears
 $('.articleList').on("click", '.popout', function(){
@@ -32,14 +34,47 @@ $('.articleList').on("click", '.popout', function(){
 		$('.comments').addClass('show');
 	};
 	$('.commentTitle').html($(this)[0].textContent);
-	//$('.commentLink').src($(this)[0])
-	var link = $(this);
-	console.log(link)
-	addComment();
+	var link = $(this).attr('data-link');
+	$('.commentLink').attr('href', link);
+	var articleId = $(this).attr('data-id');
+	$('.submitButton').attr('data-id', articleId)
+	findComment(articleId);
+}); 
+
+var findComment	= function(articleId){
+
+	// $.ajax({
+ //    	method: "GET",
+ //    	url: "/articles/" + articleId
+ //  	}).done(function(data) {
+ //  		var limit = data.length;
+ //  		for(i=0; i<limit; i++){
+ //  			listComment(data[i]);
+ //  		}
+	// });
+}
+
+var listComment = function(comment){
+	console.log(comment);
+	var nextComment = '<li>' + comment.body + '</li>';
+  $('.oldComments').append(nextComment);
+};
+
+var addComment = function(articleId, commentbody){
+	$.ajax({
+    method: "POST",
+    url: "/articles/" + articleId,
+    data: { 
+      // Value taken from note textarea
+      body: commentbody
+    }
+  })
+};
+
+$('.submitButton').on("click", function(){
+	var commentbody = $('.newComment').val();
+	var articleId = $(this).attr("data-id");
+	addComment(articleId, commentbody);
 });
 
-var addComment = function(){
-	// $.getJSON("/findArticle:id", function(data) {
-
-	// });
-};
+//--------------------------------------------------------------
