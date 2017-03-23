@@ -12,6 +12,10 @@ app.use(express.static("public"));
 mongoose.connect("mongodb://localhost/webParser");
 var db = mongoose.connection;
 
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+
 var Comment = require("./models/Comment.js");
 var Article = require("./models/Article.js");
 
