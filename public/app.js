@@ -48,12 +48,14 @@ var findComment	= function(articleId){
     	method: "GET",
     	url: "/articles/" + articleId
   	}).done(function(data) {
-  		//if (data[0].comment>0){
-  			// for(i=0; i<limit; i++){
-  			// 	listComment(data[i].comment.body);
-  			// }
-  			listComment(data[0].comment.body)
-  		//}
+
+
+  		if (data[0].comment.length>0){
+  			var limit = data[0].comment.length;
+  			for(i=0; i<limit; i++){
+  				listComment(data[0].comment[i].body);
+  			}
+  		}
 	});
 }
 

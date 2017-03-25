@@ -23,13 +23,14 @@ module.exports = function(app) {
 
  		 // And save the new note the db
   		newComment.save(function(error, doc) {
+  			var num = doc._id
   			console.log(doc);
     		// Log any errors
     		if (error) {
       			console.log(error);
     		} else {
       			// Use the article id to find and update it's note
-      			Article.findOneAndUpdate({ "_id": req.params.id }, { "comment": doc._id })
+      			Article.findOneAndUpdate({ "_id": req.params.id },{$push: { "comment": doc._id}})
       			// Execute the above query
       			.exec(function(err, doc) {
         			// Log any errors
