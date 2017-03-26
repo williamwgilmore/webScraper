@@ -5,14 +5,12 @@ var bodyParser = require("body-parser");
 
 module.exports = function(app) {
 	app.get("/articles/:id", function(req, res) {
-		console.log(req.body);
 
   		Article.find({'_id': req.params.id}).populate('comment').exec(function(error, data) {
       		if (error) {
         		res.send(error);
       		} else {
         		res.send(data);
-        		console.log(data)
       		}
   		});
 	});
@@ -24,7 +22,6 @@ module.exports = function(app) {
  		 // And save the new note the db
   		newComment.save(function(error, doc) {
   			var num = doc._id
-  			console.log(doc);
     		// Log any errors
     		if (error) {
       			console.log(error);

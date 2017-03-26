@@ -14,6 +14,18 @@
 	margin-top: 0px;
 }
 
+.submitButton {
+	margin-bottom: 5px;
+}
+
+.individualComment {
+	background: white;
+	margin: 0px 0px 5px 0px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 1px;
+}
+
 .show {
   display: block !important;
 }

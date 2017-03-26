@@ -43,11 +43,11 @@ $('.articleList').on("click", '.popout', function(){
 
 var findComment	= function(articleId){
 	$('.oldComments').empty();
-
 	$.ajax({
     	method: "GET",
     	url: "/articles/" + articleId
   	}).done(function(data) {
+  		console.log(data);
 
 
   		if (data[0].comment.length>0){
@@ -60,14 +60,12 @@ var findComment	= function(articleId){
 }
 
 var listComment = function(comment){
-	console.log(comment);
-	var nextComment = '<li>' + comment + '</li>';
-  $('.oldComments').append(nextComment);
+	var nextComment = '<p class="individualComment">' + comment + '</p>';
+  $('.oldComments').prepend(nextComment);
 };
 
 var addComment = function(articleId, commentBody){
 	var data = { body: commentBody};
-	console.log(data);
 	$.ajax({
     method: "POST",
     url: "/articles/" + articleId,
@@ -75,10 +73,12 @@ var addComment = function(articleId, commentBody){
       // Value taken from note textarea
       body: commentBody
     }
-  }).done(function(data) {
+  }).done(function(data, articleId) {
+  		var articleId = $('.submitButton').attr("data-id");
+  		findComment(articleId);
       // Log the response
       console.log('Upload successful');
-      // Empty the notes section
+      
     });
 };
 
@@ -86,6 +86,7 @@ $('.submitButton').on("click", function(){
 	var commentBody = $('.newComment').val();
 	var articleId = $(this).attr("data-id");
 	addComment(articleId, commentBody);
+	$('.newComment').val('');
 });
 
 //--------------------------------------------------------------
