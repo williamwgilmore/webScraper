@@ -9,7 +9,7 @@ var app = express();
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://heroku_kkh20g2g:heroku_kkh20g2g@ds141950.mlab.com:41950/heroku_kkh20g2g");
+mongoose.connect("mongodb://admin:passcode@ds141950.mlab.com:41950/heroku_kkh20g2g");
 var db = mongoose.connection;
 
 app.use(bodyParser.urlencoded({
